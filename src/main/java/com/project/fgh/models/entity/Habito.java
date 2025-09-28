@@ -1,0 +1,38 @@
+package com.project.fgh.models.entity;
+
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "habito")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Habito {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	
+	private String nome;
+	private String descricao;
+	
+	private GregorianCalendar dataCriacao;
+	
+	private Boolean ativo;
+	
+	@OneToMany(mappedBy = "habito", fetch =  FetchType.LAZY)
+	private List<DiasHabito> diasHabitos;
+}

@@ -1,0 +1,11 @@
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/FghApplication.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/controllers/DiasHabitoController.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/controllers/HabitoController.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/models/dto/DiasHabitoDTO.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/models/dto/HabitoDTO.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/models/entity/DiasHabito.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/models/entity/Habito.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/repository/DiasHabitoRepository.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/repository/HabitoRepository.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/services/DiasHabitoService.java
+/home/valacareggi/ProjetoBpp/src/main/java/com/project/fgh/services/HabitoService.java

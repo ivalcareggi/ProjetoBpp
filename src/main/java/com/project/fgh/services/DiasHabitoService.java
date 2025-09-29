@@ -3,8 +3,10 @@ package com.project.fgh.services;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.fgh.models.entity.DiasHabito;
 import com.project.fgh.models.entity.Habito;
@@ -33,14 +35,25 @@ public class DiasHabitoService {
 	}
 
 	// marca a hora de inicio do habito naquele dia
+	@Transactional
 	public void iniciarHabito(Long id) {
-		LocalDate today = LocalDate.now();
-		Optional<DiasHabito> registroExistente = diasHabitoRepository.findByHabitoIdAndData(idHabito, today); // DEFINIR ESSA VARIAVEL IDHABITO
+		Long idHabito = id;
+        LocalDate today = LocalDate.now();
+		// checagem se existe no banco
+		Habito habito = habitoRepository.findById(idHabito)
+                .orElseThrow(() -> new ResourceNotFoundException("Hábito com ID " + idHabito + " não encontrado."));
+
+        Optional<DiasHabito> registroExistente = diasHabitoRepository.findByHabitoIdAndData(idHabito, today);
+        
 		if (registroExistente.isPresent()) {
-            System.out.println("Hábito com ID " + idHabito + " já foi iniciado hoje.");
-            return; 
+            throw new IllegalStateException("Hábito '" + habito.getNome() + "' já foi iniciado hoje.");
         }
-		Habito habito = habitoRepository.findById(idHabito); // MEUS NEURONIOS ESTAO QUEIMADOS AGORA DEPOIS CORRIJO 🙈😘 🤯
+		DiasHabito novoRegistro = new DiasHabito();
+        novoRegistro.setHabito(habito);
+        novoRegistro.setData(today);
+        novoRegistro.setHoraInicio(LocalDateTime.now()); 
+        
+        diasHabitoRepository.save(novoRegistro);
 	}
 	
 	// busca o ultimo streak do habito

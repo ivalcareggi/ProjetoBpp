@@ -1,0 +1,77 @@
+### Java ###
+*.class
+*.war
+*.ear
+*.nar
+*.car
+hs_err_pid*
+replay_pid*
+
+# Mobile tools
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.zip
+*.tar.gz
+*.rar
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+### Gradle ###
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### Eclipse ###
+.project
+.classpath
+.csettings/
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+
+### VS Code ###
+.vscode/
+
+### Logs & runtime ###
+*.log
+*.out
+*.pid
+*.seed
+*.pid.lock
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Spring Specific ###
+.springBeans
+application-*.yml
+application-*.yaml
+application-*.properties

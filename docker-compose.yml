@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    container_name: projeto_bpp
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    environment:
+      - POSTGRESQL_USERNAME=${POSTGRESQL_USERNAME:-admin123}
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD:-admin123}
+      - POSTGRESQL_DB=${POSTGRESQL_DB:-projeto_bpp_db}
+    
+  db:
+    image: postgres:13
+    container_name: projeto_bpp_db
+    environment:
+      POSTGRES_USER: ${POSTGRESQL_USERNAME:-admin123}
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD:-admin123}
+      POSTGRES_DB: ${POSTGRESQL_DB:-projeto_bpp_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  db_data:

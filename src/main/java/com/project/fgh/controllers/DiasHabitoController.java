@@ -1,6 +1,7 @@
 package com.project.fgh.controllers;
 
 import com.project.fgh.models.dto.DiasHabitoDTO;
+import com.project.fgh.models.dto.DiasHabitoRequestDTO; 
 import com.project.fgh.models.entity.DiasHabito;
 import com.project.fgh.services.DiasHabitoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,8 +29,8 @@ public class DiasHabitoController {
             @ApiResponse(responseCode = "400", description = "Dados de entrada inválidos")
     })
     @PostMapping
-    public ResponseEntity<DiasHabitoDTO> criar(@RequestBody DiasHabitoDTO diasHabitoDTO) {
-        DiasHabito diasHabito = diasHabitoDTO.getDiasHabito();
+    public ResponseEntity<DiasHabitoDTO> criar(@RequestBody DiasHabitoRequestDTO diasHabitoRequestDTO) { // MUDANÇA AQUI
+        DiasHabito diasHabito = diasHabitoRequestDTO.toEntity(); // MUDANÇA AQUI
         DiasHabito novoDiasHabito = diasHabitoService.salvar(diasHabito);
         return new ResponseEntity<>(new DiasHabitoDTO(novoDiasHabito), HttpStatus.CREATED);
     }
@@ -59,10 +60,10 @@ public class DiasHabitoController {
             @ApiResponse(responseCode = "400", description = "Dados de entrada inválidos")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<DiasHabitoDTO> atualizar(@PathVariable Long id, @RequestBody DiasHabitoDTO diasHabitoDTO) {
-        diasHabitoService.buscarId(id);
-        diasHabitoDTO.setId(id);
-        DiasHabito habitoAtualizado = diasHabitoService.salvar(diasHabitoDTO.getDiasHabito());
+    public ResponseEntity<DiasHabitoDTO> atualizar(@PathVariable Long id, @RequestBody DiasHabitoRequestDTO diasHabitoRequestDTO) { // MUDANÇA AQUI
+        DiasHabito diasHabitoParaAtualizar = diasHabitoRequestDTO.toEntity(); 
+        diasHabitoParaAtualizar.setId(id); 
+        DiasHabito habitoAtualizado = diasHabitoService.salvar(diasHabitoParaAtualizar);
         return ResponseEntity.ok(new DiasHabitoDTO(habitoAtualizado));
     }
 

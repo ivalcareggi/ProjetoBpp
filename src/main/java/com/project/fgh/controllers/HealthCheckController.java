@@ -1,5 +1,6 @@
 package com.project.fgh.controllers;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,8 @@ import java.time.Instant;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/")  
+@RequestMapping("/")
+@Hidden // Esta anotação esconde todos os endpoints deste controller do Swagger UI
 public class HealthCheckController {
 
     @GetMapping

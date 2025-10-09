@@ -6,6 +6,9 @@ Thumbs.db
 *.log
 logs/
 
+target/** */
+target/*
+target/*/**
 # IntelliJ
 .idea/
 *.iml

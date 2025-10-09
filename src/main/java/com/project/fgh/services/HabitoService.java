@@ -1,9 +1,12 @@
 package com.project.fgh.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.fgh.models.dto.HabitoDTO;
 import com.project.fgh.models.entity.Habito;
 import com.project.fgh.repository.HabitoRepository;
 import com.project.fgh.services.exceptions.ResourceNotFoundException;
@@ -52,7 +55,12 @@ public class HabitoService {
         }
         habitoRepository.deleteById(id);
     }
-
+    @Transactional
+    public List<HabitoDTO> listarTodosComoDTO() {
+    return listarTodos().stream()
+            .map(HabitoDTO::new)
+            .collect(Collectors.toList());
+    }
     @Transactional
     public Habito ativarDesativar(Long id) {
         Habito habito = buscarId(id); 

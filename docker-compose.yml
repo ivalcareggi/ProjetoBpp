@@ -14,7 +14,7 @@ services:
       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD:-admin123}
       - POSTGRESQL_DB=${POSTGRESQL_DB:-projeto_bpp_db}
     
-  db:
+  postgres:
     image: postgres:13
     container_name: projeto_bpp_db
     environment:

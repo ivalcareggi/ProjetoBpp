@@ -47,10 +47,8 @@ public class HabitoController {
 
     @GetMapping
     public ResponseEntity<List<HabitoDTO>> listarTodos() {
-        List<Habito> habitos = habitoService.listarTodos();
-        List<HabitoDTO> habitosDto = habitos.stream()
-			.map(HabitoDTO::new)
-			.collect(Collectors.toList());
+        // Agora o controller apenas chama o método que já retorna a lista de DTOs
+        List<HabitoDTO> habitosDto = habitoService.listarTodosComoDTO();
         return ResponseEntity.ok(habitosDto);
     }
 

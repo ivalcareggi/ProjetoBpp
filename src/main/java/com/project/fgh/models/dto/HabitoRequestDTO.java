@@ -26,10 +26,6 @@ public class HabitoRequestDTO {
     @Schema(description = "Configuração específica da frequência. Ex: 'SEG,QUA,SEX' para DIAS_ESPECIFICOS, ou '3' para VEZES_POR_SEMANA.", example = "SEG,QUA,SEX")
     private String configFrequencia;
 
-    /**
-     * Converte este DTO de requisição em uma entidade Habito.
-     * @return Uma instância da entidade Habito pronta para ser salva.
-     */
     public Habito toEntity() {
         Habito habito = new Habito();
         habito.setNome(this.nome);
@@ -37,7 +33,6 @@ public class HabitoRequestDTO {
         habito.setTipoHabito(this.tipoHabito);
         habito.setTipoFrequencia(this.tipoFrequencia);
         habito.setConfigFrequencia(this.configFrequencia);
-        // O serviço se encarregará de setar dataCriacao, ativo e id.
         return habito;
     }
 }

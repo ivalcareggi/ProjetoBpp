@@ -20,6 +20,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.time.format.TextStyle;
 
 @Service
 @RequiredArgsConstructor
@@ -58,18 +59,18 @@ public class AnalyticsService {
                 .entrySet().stream()
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
-                .map(DayOfWeek::toString) 
+                .map(this::formatarDiaDaSemana) 
                 .orElse("N/A");
 
         String melhorPeriodo = concluidos.stream()
-                .filter(d -> d.getHoraFim() != null)
-                .map(d -> getPeriodoDoDia(d.getHoraFim()))
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse("N/A");
-
+            .map(d -> d.getHoraFim() != null ? d.getHoraFim() : d.getHoraInicio()) 
+            .filter(Objects::nonNull) 
+            .map(this::getPeriodoDoDia)
+            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+            .entrySet().stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse("N/A");
         return new MelhorDesempenhoDTO(melhorDia, melhorPeriodo);
     }
 
@@ -125,12 +126,15 @@ public class AnalyticsService {
         return correlacoes;
     }
 
-
     private String getPeriodoDoDia(LocalDateTime dateTime) {
         int hour = dateTime.getHour();
         if (hour >= 6 && hour < 12) return "MANHÃ";
         if (hour >= 12 && hour < 18) return "TARDE";
         if (hour >= 18 && hour < 24) return "NOITE";
         return "MADRUGADA";
+    }
+
+    private String formatarDiaDaSemana(DayOfWeek dayOfWeek) {
+        return dayOfWeek.getDisplayName(TextStyle.FULL, new Locale("pt", "BR")).toUpperCase();
     }
 }

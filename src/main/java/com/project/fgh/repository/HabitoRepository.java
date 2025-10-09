@@ -10,9 +10,8 @@ import com.project.fgh.models.entity.Habito;
 
 @Repository
 public interface HabitoRepository extends JpaRepository<Habito, Long> {
-    // Busca um hábito pelo nome, ignorando a diferença entre maiúsculas e minúsculas.
+    
     Optional<Habito> findByNomeIgnoreCase(String nome);
     
-    //Retorna uma lista de todos os hábitos que estão marcados como ativos.
     List<Habito> findByAtivoTrue();
 }

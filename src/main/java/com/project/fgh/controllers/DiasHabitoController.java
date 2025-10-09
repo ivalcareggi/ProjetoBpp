@@ -42,12 +42,11 @@ public class DiasHabitoController {
         return ResponseEntity.ok(new DiasHabitoDTO(diasHabito));
     }
 
+    
     @GetMapping
     public ResponseEntity<List<DiasHabitoDTO>> listarTodos() {
-    	List<DiasHabito> habitos = diasHabitoService.listarTodos();
-        List<DiasHabitoDTO> habitosDto = habitos.stream()
-			.map(DiasHabitoDTO::new)
-			.collect(Collectors.toList());
+        // Lógica de mapeamento removida e centralizada no serviço
+        List<DiasHabitoDTO> habitosDto = diasHabitoService.listarTodosComoDTO();
         return ResponseEntity.ok(habitosDto);
     }
 

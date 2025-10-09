@@ -9,7 +9,7 @@ import com.project.fgh.services.exceptions.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@RestControllerAdvice
+// @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(ResourceNotFoundException.class)

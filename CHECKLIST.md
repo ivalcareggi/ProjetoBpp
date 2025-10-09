@@ -7,18 +7,18 @@
 - [x] Pode ser desenvolvida em 3-4 meses individualmente ou em grupo de 2 a 4 pessoas
 
 ## Backlog
-- [ ] Identificar e eliminar code smells no módulo principal
-- [ ] Refatorar funções longas (Long Method)
-- [ ] Eliminar duplicação de código (Duplicate Code)
+- [x] Identificar e eliminar code smells no módulo principal
+- [x] Refatorar funções longas (Long Method)
+- [x] Eliminar duplicação de código (Duplicate Code)
 - [ ] Melhorar nomenclatura ambígua (Poor Naming)
 - [ ] Aplicar princípios SOLID onde apropriado
 
 
 ## Code Smells Prioritários para Identificação:
 ### Nível Método/Função:
-- [] Long Method: Métodos com mais de 20-30 linhas
+- [x] Long Method: Métodos com mais de 20-30 linhas
 - [] Long Parameter List: Mais de 3-4 parâmetros
-- [] Duplicate Code: Código repetido em múltiplos locais
+- [x] Duplicate Code: Código repetido em múltiplos locais
 - [] Dead Code: Código não utilizado
 ### Nível Classe:
 - [] Large Class: Classes com muitas responsabilidades
@@ -36,24 +36,24 @@
 - [X] Formatação consistente
 - [X] README inicial criado
 ### Sprint 2 (Semana 3):
-- [] Tudo do Sprint 1 +
-- [] Code smells identificados e catalogados
-- [] Pelo menos 2 code smells corrigidos
-- [] Documentação das correções
+- [x] Tudo do Sprint 1 +
+- [x] Code smells identificados e catalogados
+- [x] Pelo menos 2 code smells corrigidos
+- [x] Documentação das correções
 ### Sprint 3 (Semana 4):
-- [] Tudo do Sprint 2 +
+- [x] Tudo do Sprint 2 +
 - [] Princípios SOLID aplicados onde apropriado
 - [] Estrutura de classes melhorada
 - [] Acoplamento reduzido
 ### Sprint Final (Semana 5):
 - [] Tudo do Sprint 3 +
-- [] Pelo menos 5 refatorações documentadas
-- [] Código final limpo e bem estruturado
-- [] Relatório de qualidade completo
+- [x] Pelo menos 5 refatorações documentadas
+- [x] Código final limpo e bem estruturado
+- [x] Relatório de qualidade completo
 
 ## Documentos de Entrega:
-- [] Visão do Produto (PDF, 2-3 páginas)
+- [x] Visão do Produto (PDF, 2-3 páginas)
 - [] Product Backlog (PDF)
 - [] Relatório de Qualidade de Código (PDF, 3-4 páginas)
-- [] Link para o repositório com o código-fonte do projeto
+- [x] Link para o repositório com o código-fonte do projeto
 - [] Vídeo de apresentação (8-10 minutos)

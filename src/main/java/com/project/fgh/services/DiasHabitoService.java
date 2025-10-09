@@ -2,12 +2,14 @@ package com.project.fgh.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.fgh.models.dto.DiasHabitoDTO;
 import com.project.fgh.models.entity.DiasHabito;
 import com.project.fgh.models.entity.Habito;
 import com.project.fgh.repository.DiasHabitoRepository;
@@ -60,7 +62,11 @@ public class DiasHabitoService {
 	public List<DiasHabito> listarTodos() {
 		return diasHabitoRepository.findAll();
 	}
-
+	public List<DiasHabitoDTO> listarTodosComoDTO() {
+		return listarTodos().stream()
+				.map(DiasHabitoDTO::new)
+				.collect(Collectors.toList());
+	}
 	@Transactional
 	public void excluir(Long id) {
 		 if (!diasHabitoRepository.existsById(id)) {

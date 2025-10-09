@@ -30,11 +30,11 @@
 
 ## Definition of Done (DoD) por Sprint
 ### Sprint 1 (Semana 2):
-- [] Funcionalidade implementada
-- [] Código segue convenções de nomenclatura
-- [] Funções pequenas e focadas
-- [] Formatação consistente
-- [] README inicial criado
+- [X] Funcionalidade implementada
+- [X] Código segue convenções de nomenclatura
+- [X] Funções pequenas e focadas
+- [X] Formatação consistente
+- [X] README inicial criado
 ### Sprint 2 (Semana 3):
 - [] Tudo do Sprint 1 +
 - [] Code smells identificados e catalogados

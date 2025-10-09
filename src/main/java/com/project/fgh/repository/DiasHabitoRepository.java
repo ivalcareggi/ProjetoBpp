@@ -1,19 +1,18 @@
 package com.project.fgh.repository;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
+import com.project.fgh.models.entity.DiasHabito;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.project.fgh.models.entity.DiasHabito;
-
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface DiasHabitoRepository extends JpaRepository<DiasHabito, Long>{
-    
+public interface DiasHabitoRepository extends JpaRepository<DiasHabito, Long> {
+
+    // SEUS MÉTODOS EXISTENTES
     Optional<DiasHabito> findByHabitoIdAndData(Long habitoId, LocalDate data);
 
     List<DiasHabito> findByHabitoIdOrderByDataDesc(Long habitoId);
@@ -27,7 +26,17 @@ public interface DiasHabitoRepository extends JpaRepository<DiasHabito, Long>{
     List<DiasHabito> findByIdHabito(Long idHabito);
 
 
+    // MÉTODOS NECESSÁRIOS PARA O ANALYTICS SERVICE
+    
+    /**
+     * Conta o número de registros de um hábito específico que foram marcados como concluídos
+     * dentro de um intervalo de datas. Usado para "Taxa de Sucesso".
+     */
     int countByHabitoIdAndDataBetweenAndConcluido(Long habitoId, LocalDate inicio, LocalDate fim, boolean concluido);
 
+    /**
+     * Busca todos os registros de hábitos concluídos (independente de qual hábito seja)
+     * dentro de um intervalo de datas. Essencial para "Melhor Desempenho" e "Correlações".
+     */
     List<DiasHabito> findByConcluidoAndDataBetween(boolean concluido, LocalDate inicio, LocalDate fim);
 }

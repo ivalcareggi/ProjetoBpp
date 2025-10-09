@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/") // healthcheck de lei, kubernetes? 😳 
+@RequestMapping("/")  
 public class HealthCheckController {
 
     @GetMapping

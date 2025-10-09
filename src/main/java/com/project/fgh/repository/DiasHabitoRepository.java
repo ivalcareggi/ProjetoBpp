@@ -13,6 +13,7 @@ import com.project.fgh.models.entity.DiasHabito;
 
 @Repository
 public interface DiasHabitoRepository extends JpaRepository<DiasHabito, Long>{
+    
     Optional<DiasHabito> findByHabitoIdAndData(Long habitoId, LocalDate data);
 
     List<DiasHabito> findByHabitoIdOrderByDataDesc(Long habitoId);
@@ -23,5 +24,10 @@ public interface DiasHabitoRepository extends JpaRepository<DiasHabito, Long>{
     long countDiasConcluidosByHabitoId(Long habitoId);
 
     @Query("SELECT dh FROM DiasHabito dh WHERE dh.habito.id = :idHabito")
-	List<DiasHabito> findByIdHabito(Long idHabito);
+    List<DiasHabito> findByIdHabito(Long idHabito);
+
+
+    int countByHabitoIdAndDataBetweenAndConcluido(Long habitoId, LocalDate inicio, LocalDate fim, boolean concluido);
+
+    List<DiasHabito> findByConcluidoAndDataBetween(boolean concluido, LocalDate inicio, LocalDate fim);
 }

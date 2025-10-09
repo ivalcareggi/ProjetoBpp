@@ -29,9 +29,9 @@ public class DiasHabitoService {
 	}
 	
 	// busca um diasHabito com base no id do diasHabito
-	public DiasHabito buscar(Long id) {
-		Optional<DiasHabito> diasHabitoOptional = diasHabitoRepository.findById(id);
-		return diasHabitoOptional.orElseThrow(()-> new ResourceNotFoundException("Dia não encontrado!"));
+	public DiasHabito buscarId(Long id) {
+		return diasHabitoRepository.findById(id)
+				.orElseThrow(()-> new ResourceNotFoundException("Dia com id " + id + " não encontrado!"));
 	}
 
 	// marca a hora de inicio do habito naquele dia
@@ -56,9 +56,17 @@ public class DiasHabitoService {
         diasHabitoRepository.save(novoRegistro);
 	}
 	
-	// busca o ultimo streak do habito
-	public List<DiasHabito> buscarStreakHabito(Long idHabito) {
-		return null;
+	@Transactional(readOnly = true)
+	public List<DiasHabito> listarTodos() {
+		return diasHabitoRepository.findAll();
+	}
+
+	@Transactional
+	public void excluir(Long id) {
+		 if (!diasHabitoRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Dia com ID " + id + " não encontrado para exclusão.");
+        }
+		 diasHabitoRepository.deleteById(id);
 	}
 	
 }

@@ -21,4 +21,7 @@ public interface DiasHabitoRepository extends JpaRepository<DiasHabito, Long>{
 
     @Query("SELECT COUNT(dh) FROM DiasHabito dh WHERE dh.habito.id = :habitoId AND dh.concluido = true")
     long countDiasConcluidosByHabitoId(Long habitoId);
+
+    @Query("SELECT dh FROM DiasHabito dh WHERE dh.habito.id = :idHabito")
+	List<DiasHabito> findByIdHabito(Long idHabito);
 }

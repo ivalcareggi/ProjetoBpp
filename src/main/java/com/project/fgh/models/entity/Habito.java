@@ -63,4 +63,8 @@ public class Habito {
         this.dataCriacao = LocalDate.now();
         this.ativo = true;
     }
+
+	public Habito(Long habitoId) {
+		this.id = habitoId;
+	}
 }
